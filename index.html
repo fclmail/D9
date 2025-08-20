@@ -96,46 +96,44 @@
     let transactionHistory = [];
     const contractAddress = "0x711aB5cDaAa3aF98C6a12701805cFb38E4D09C85";
     const contractABI = [
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "asset",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "premium",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "initiator",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "params",
-				"type": "bytes"
-			}
-		],
-		"name": "executeOperation",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	}
-];
+    {
+      "inputs": [
+        { "internalType": "address", "name": "buyRouter",  "type": "address" },
+        { "internalType": "address", "name": "sellRouter", "type": "address" },
+        { "internalType": "address", "name": "token",      "type": "address" },
+        { "internalType": "uint256","name": "amountIn",   "type": "uint256" },
+        { "internalType": "bool",   "name": "useFlashLoan","type": "bool" },
+        { "internalType": "string", "name": "flashLoanProvider", "type": "string" }
+      ],
+      "name": "executeArbitrage",
+      "outputs": [
+        { "internalType": "uint256", "name": "profit", "type": "uint256" }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawProfits",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    /* keep this if your contract actually exposes it (optional for UI) */
+    {
+      "inputs": [
+        { "internalType":"address","name":"asset","type":"address" },
+        { "internalType":"uint256","name":"amount","type":"uint256" },
+        { "internalType":"uint256","name":"premium","type":"uint256" },
+        { "internalType":"address","name":"initiator","type":"address" },
+        { "internalType":"bytes","name":"params","type":"bytes" }
+      ],
+      "name":"executeOperation",
+      "outputs":[ { "internalType":"bool","name":"","type":"bool" } ],
+      "stateMutability":"nonpayable",
+      "type":"function"
+    }
+  ];
 
     // Tokens with address + decimals (display-safe)
     const tokens = {
